@@ -1,4 +1,5 @@
 import Product from './Product';
+import Mailbox from './Mailbox';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         imgUrl="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?dpr=2&h=480&w=640"
         price={14.29}
       />
+      <Mailbox />
     </div>
   );
 }
