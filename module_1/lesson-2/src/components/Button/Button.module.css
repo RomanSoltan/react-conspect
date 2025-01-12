@@ -1,0 +1,16 @@
+.button {
+  border: 1px solid orange;
+  color: white;
+  background-color: black;
+  padding: 8px 16px;
+}
+
+.primary {
+  font-size: 18px;
+  color: aqua;
+}
+
+.secondary {
+  font-size: 25px;
+  margin-right: 20px;
+}
