@@ -1,29 +1,33 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 // import CustomButton from './components/CustomButton/CustomButton';
+import ClickCounter from './components/ClickCounter/ClickCounter';
 import './App.css';
 
 const App = () => {
-  //Декілька станів
-
-  const [clicks, setClicks] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setClicks(clicks + 1);
-  };
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
+  //Ізоляція стану
   return (
     <>
-      <button onClick={handleClick}>Current: {clicks}</button>
-      <button onClick={handleToggle}>{isOpen ? 'Hide' : 'Show'}</button>
-      {isOpen && <p>Now you can see me!</p>}
+      <ClickCounter />
+      <ClickCounter />
     </>
   );
-
+  // ===========================
+  // //Декілька станів
+  // const [clicks, setClicks] = useState(0);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const handleClick = () => {
+  //   setClicks(clicks + 1);
+  // };
+  // const handleToggle = () => {
+  //   setIsOpen(!isOpen);
+  // };
+  // return (
+  //   <>
+  //     <button onClick={handleClick}>Current: {clicks}</button>
+  //     <button onClick={handleToggle}>{isOpen ? 'Hide' : 'Show'}</button>
+  //     {isOpen && <p>Now you can see me!</p>}
+  //   </>
+  // );
   // ====================
   // // Реактивність
   // // let clicks = 0;
@@ -45,7 +49,6 @@ const App = () => {
   //   </>
   // );
   // ====================
-  // =============================
   // Обробка подій
   // const handleClick = () => {
   //   alert('I am a button');
