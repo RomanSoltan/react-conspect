@@ -1,17 +1,17 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const ClickCounter = () => {
-  const [clicks, setClicks] = useState(0);
+// const ClickCounter = () => {
+//   const [clicks, setClicks] = useState(0);
 
-  const handleClick = () => {
-    setClicks(clicks + 1);
-  };
+//   const handleClick = () => {
+//     setClicks(clicks + 1);
+//   };
 
-  return (
-    <>
-      <button onClick={handleClick}>Current: {clicks}</button>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <button onClick={handleClick}>Current: {clicks}</button>
+//     </>
+//   );
+// };
 
-export default ClickCounter;
+// export default ClickCounter;
