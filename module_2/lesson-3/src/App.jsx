@@ -1,3 +1,5 @@
+import CustomButton from './components/CustomButton/CustomButton';
+
 import './App.css';
 
 const App = () => {
@@ -10,6 +12,8 @@ const App = () => {
 
   return (
     <>
+      <CustomButton message="Playing music">Play some music</CustomButton>
+      <CustomButton message="Uploading your data!">Upload data</CustomButton>
       <button onClick={handleClick}>First button</button>
       <button onClick={evt => console.log(evt)}>Second button</button>
     </>
