@@ -1,23 +1,34 @@
-import CustomButton from './components/CustomButton/CustomButton';
-
+import { useState } from 'react';
+// import CustomButton from './components/CustomButton/CustomButton';
 import './App.css';
 
 const App = () => {
-  // =======================
-  //Об'єкт події
+  // Реактивність
+  // let clicks = 0;
+  const [clicks, setClicks] = useState(0);
 
-  const handleClick = evt => {
-    console.log(evt);
+  const handleClick = () => {
+    // clicks = clicks + 1;
+    setClicks(clicks + 1);
   };
 
-  return (
-    <>
-      <CustomButton message="Playing music">Play some music</CustomButton>
-      <CustomButton message="Uploading your data!">Upload data</CustomButton>
-      <button onClick={handleClick}>First button</button>
-      <button onClick={evt => console.log(evt)}>Second button</button>
-    </>
-  );
+  return <button onClick={handleClick}>Current: {clicks}</button>;
+
+  // =======================
+
+  // // Об'єкт події
+
+  // const handleClick = evt => {
+  //   console.log(evt);
+  // };
+  // return (
+  //   <>
+  //     <button onClick={handleClick}>First button</button>
+  //     <button onClick={evt => console.log(evt)}>Second button</button>
+  //   </>
+  // );
+
+  // ====================
 
   // =============================
   // Обробка подій
