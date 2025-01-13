@@ -1,12 +1,14 @@
-
-import './App.css'
+import './App.css';
 
 const App = () => {
-  return (
-    <>
-    hello
-    </>
-  )
-}
+  const handleClick = () => {
+    alert('I am a button');
+  };
 
-export default App
+  return <button onClick={handleClick}>Click me!</button>;
+
+  // інший спосіб
+  // return <button onClick={() => alert("I'm a button!")}>Click me!</button>;
+};
+
+export default App;
