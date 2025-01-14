@@ -21,28 +21,55 @@ import './App.css';
 // };
 
 function App() {
-  // Декілька ефектів
-  const [first, setFirst] = useState(0);
-  const [second, setSecond] = useState(0);
-
+  // Робота з LocalStorage
+  const [clicks, setClicks] = useState(() => {
+    // Зчитуємо значення за ключем
+    const savedClicks = window.localStorage.getItem('saved-clicks');
+    // Якщо там щось є, повертаємо це
+    // значення як початкове значення стану
+    if (savedClicks !== null) {
+      return Number(savedClicks);
+    }
+    // У протилежному випадку повертаємо
+    // яке-небудь значення за замовчуванням
+    return Number(0);
+  });
+  /**Збережемо кількість кліків між перезавантаженнями
+   * сторінки
+   */
   useEffect(() => {
-    console.log('First updated:', first);
-  }, [first]);
-
-  useEffect(() => {
-    console.log('Second updated:', second);
-  }, [second]);
-
-  useEffect(() => {
-    console.log('first or Second updated:', first + second);
-  }, [first, second]);
+    // add to local storage
+    window.localStorage.setItem('saved-clicks', clicks);
+  }, [clicks]);
+  // localStorage.clear();
 
   return (
-    <>
-      <button onClick={() => setFirst(first + 1)}>First: {first}</button>
-      <button onClick={() => setSecond(second + 1)}>Second: {second}</button>
-    </>
+    <div>
+      <button onClick={() => setClicks(clicks + 1)}>
+        You clicked {clicks} times
+      </button>
+      <button onClick={() => setClicks(0)}>Reset</button>
+    </div>
   );
+  // ==========================
+  // // Декілька ефектів
+  // const [first, setFirst] = useState(0);
+  // const [second, setSecond] = useState(0);
+  // useEffect(() => {
+  //   console.log('First updated:', first);
+  // }, [first]);
+  // useEffect(() => {
+  //   console.log('Second updated:', second);
+  // }, [second]);
+  // useEffect(() => {
+  //   console.log('first or Second updated:', first + second);
+  // }, [first, second]);
+  // return (
+  //   <>
+  //     <button onClick={() => setFirst(first + 1)}>First: {first}</button>
+  //     <button onClick={() => setSecond(second + 1)}>Second: {second}</button>
+  //   </>
+  // );
   // ============================================
   // // Оновлення
   // // Щоб ефект працював стабільно потрібно
