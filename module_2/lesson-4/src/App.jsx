@@ -5,9 +5,14 @@ function App() {
   const [clicks, setClicks] = useState(0);
 
   // Оголошуємо ефект
+
+  // монтування
+  // Якщо другим аргументом хука useEffect передати
+  // порожній масив, то такий ефект виконається лише
+  // один раз - на етапі монтування компонента, і більше ніколи.
   useEffect(() => {
-    document.title = `You clicked ${clicks} times`;
-  });
+    console.log('You can see me only once');
+  }, []);
 
   /** Хук useEffect(callback, deps) оголошує ефект,
    * який приймає два аргументи:
