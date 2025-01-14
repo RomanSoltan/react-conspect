@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// // Розмонтування
+// // Розмонтування (внизу продовження)
 // const Modal = () => {
 //   useEffect(() => {
 //     // Зберігаємо ідентифікатор інтервалу в змінну
@@ -41,7 +41,7 @@ function App() {
     // add to local storage
     window.localStorage.setItem('saved-clicks', clicks);
   }, [clicks]);
-  // localStorage.clear();
+  localStorage.clear();
 
   return (
     <div>
