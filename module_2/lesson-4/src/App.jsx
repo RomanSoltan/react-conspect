@@ -2,35 +2,51 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 // // Розмонтування
-const Modal = () => {
-  useEffect(() => {
-    // Зберігаємо ідентифікатор інтервалу в змінну
-    const intervalId = setInterval(() => {
-      console.log(`Interval ${Date.now()}`);
-    }, 2000);
-    return () => {
-      // Очищаємо інтервал за його ідентифікатором
-      // Функція очищення
-      // Хук useEffect може оголошувати функцію очищення
-      // ефекту, для цього з колбек-функції потрібно
-      // повернути ще одну функцію.
-      clearInterval(intervalId);
-    };
-  }, []);
-  return <div>Modal</div>;
-};
+// const Modal = () => {
+//   useEffect(() => {
+//     // Зберігаємо ідентифікатор інтервалу в змінну
+//     const intervalId = setInterval(() => {
+//       console.log(`Interval ${Date.now()}`);
+//     }, 2000);
+//     return () => {
+//       // Очищаємо інтервал за його ідентифікатором
+//       // Функція очищення
+//       // Хук useEffect може оголошувати функцію очищення
+//       // ефекту, для цього з колбек-функції потрібно
+//       // повернути ще одну функцію.
+//       clearInterval(intervalId);
+//     };
+//   }, []);
+//   return <div>Modal</div>;
+// };
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  // Оновлення
+  // Щоб ефект працював стабільно потрібно
+  // додати змінну clicks до масиву залежностей
+  const [clicks, setClicks] = useState(0);
+
+  useEffect(() => {
+    console.log('Clicks updated:', clicks);
+  }, [clicks]);
 
   return (
-    <div>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? 'Close' : 'Open'}
-      </button>
-      {isOpen && <Modal />}
-    </div>
+    <button onClick={() => setClicks(clicks + 1)}>
+      You clicked {clicks} times
+    </button>
   );
+
+  // ===================================
+  // // // Розмонтування (продовження)
+  // const [isOpen, setIsOpen] = useState(false);
+  // return (
+  //   <div>
+  //     <button onClick={() => setIsOpen(!isOpen)}>
+  //       {isOpen ? 'Close' : 'Open'}
+  //     </button>
+  //     {isOpen && <Modal />}
+  //   </div>
+  // );
   // ====================================
   // // Оголошуємо ефект
   // // монтування
