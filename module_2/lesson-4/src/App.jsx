@@ -21,21 +21,41 @@ import './App.css';
 // };
 
 function App() {
-  // Оновлення
-  // Щоб ефект працював стабільно потрібно
-  // додати змінну clicks до масиву залежностей
-  const [clicks, setClicks] = useState(0);
+  // Декілька ефектів
+  const [first, setFirst] = useState(0);
+  const [second, setSecond] = useState(0);
 
   useEffect(() => {
-    console.log('Clicks updated:', clicks);
-  }, [clicks]);
+    console.log('First updated:', first);
+  }, [first]);
+
+  useEffect(() => {
+    console.log('Second updated:', second);
+  }, [second]);
+
+  useEffect(() => {
+    console.log('first or Second updated:', first + second);
+  }, [first, second]);
 
   return (
-    <button onClick={() => setClicks(clicks + 1)}>
-      You clicked {clicks} times
-    </button>
+    <>
+      <button onClick={() => setFirst(first + 1)}>First: {first}</button>
+      <button onClick={() => setSecond(second + 1)}>Second: {second}</button>
+    </>
   );
-
+  // ============================================
+  // // Оновлення
+  // // Щоб ефект працював стабільно потрібно
+  // // додати змінну clicks до масиву залежностей
+  // const [clicks, setClicks] = useState(0);
+  // useEffect(() => {
+  //   console.log('Clicks updated:', clicks);
+  // }, [clicks]);
+  // return (
+  //   <button onClick={() => setClicks(clicks + 1)}>
+  //     You clicked {clicks} times
+  //   </button>
+  // );
   // ===================================
   // // // Розмонтування (продовження)
   // const [isOpen, setIsOpen] = useState(false);
