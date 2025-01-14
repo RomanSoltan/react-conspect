@@ -32,7 +32,7 @@ function App() {
     }
     // У протилежному випадку повертаємо
     // яке-небудь значення за замовчуванням
-    return Number(0);
+    return 0;
   });
   /**Збережемо кількість кліків між перезавантаженнями
    * сторінки
@@ -41,7 +41,7 @@ function App() {
     // add to local storage
     window.localStorage.setItem('saved-clicks', clicks);
   }, [clicks]);
-  localStorage.clear();
+  // localStorage.clear();
 
   return (
     <div>
