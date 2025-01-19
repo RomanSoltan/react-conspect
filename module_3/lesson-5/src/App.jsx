@@ -1,13 +1,20 @@
 // import { useState } from 'react'
 
-import "./App.css";
+import './App.css';
+import LoginForm from './components/LoginForm/LoginForm';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  // Колбек-функція для обробки сабміту форми
+  const handleLogin = userData => {
+    // Виконуємо необхідні операції з даними
+    console.log(userData);
+  };
 
   return (
     <div>
-      <p>hello</p>
+      <h1>Please login to your account!</h1>
+      {/* Передаємо колбек як пропс форми */}
+      <LoginForm onLogin={handleLogin} />
     </div>
   );
 }
