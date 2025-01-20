@@ -5,6 +5,7 @@ import LangSwitcher from './components/LangSwitcher/LangSwitcher';
 import LoginForm from './components/LoginForm/LoginForm';
 import MyComponent from './components/MyComponent/MyComponent';
 import SearchBar from './components/SearchBar/SearchBar';
+import ControledLoginForm from './components/ControledLoginForm/ControledLoginForm';
 
 function App() {
   const [hasAccepted, setHasAccepted] = useState(false);
@@ -26,6 +27,8 @@ function App() {
 
   return (
     <div>
+      {/* controled form */}
+      <ControledLoginForm />
       {/* checkbox */}
       <label>
         <input
@@ -73,7 +76,7 @@ function App() {
       </label>
       {/* Select */}
       <p>Selected language: {lang}</p>
-      <LangSwitcher value={lang} onSelect={setLang} />
+      {/* <LangSwitcher value={lang} onSelect={setLang} /> */}
       <SearchBar />
       <h1>Please login to your account!</h1>
       {/* Передаємо колбек як пропс форми */}
