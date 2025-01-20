@@ -7,6 +7,11 @@ import MyComponent from './components/MyComponent/MyComponent';
 import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
+  const [hasAccepted, setHasAccepted] = useState(false);
+  const handleChange = e => {
+    setHasAccepted(e.target.checked);
+  };
+
   const [coffeeSize, setCoffeeSize] = useState('sm');
   const handleSizeChange = e => {
     setCoffeeSize(e.target.value);
@@ -21,6 +26,19 @@ function App() {
 
   return (
     <div>
+      {/* checkbox */}
+      <label>
+        <input
+          type="checkbox"
+          name="terms"
+          checked={hasAccepted}
+          onChange={handleChange}
+        />
+        I accept terms and conditions
+      </label>
+      <button type="button" disabled={!hasAccepted}>
+        Proceed
+      </button>
       {/* radio btn */}
       <h1>Select coffee size</h1>
       <label>
@@ -55,7 +73,7 @@ function App() {
       </label>
       {/* Select */}
       <p>Selected language: {lang}</p>
-      {/* <LangSwitcher value={lang} onSelect={setLang} /> */}
+      <LangSwitcher value={lang} onSelect={setLang} />
       <SearchBar />
       <h1>Please login to your account!</h1>
       {/* Передаємо колбек як пропс форми */}
