@@ -1,40 +1,53 @@
 import "./App.css";
 import Products from "../pages/Products";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import Analytics from "path/to/analytics-service";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const username = searchParams.get("username");
+  /* ======================================================================================================================
+  useLocation
+  ====================================================================================================================== */
+  const location = useLocation();
 
   useEffect(() => {
-    // Тут виконуємо асинхронну операцію,
-    // наприклад HTTP-запит за інформацією про користувача
-    if (username === "") return;
-    FakeAPI.getUser(username).then(setUser);
-  }, [username]);
+    Analytics.send(location);
+  }, [location]);
+  /* ======================================================================================================================
+  search params
+  ====================================================================================================================== */
 
-  const updateSearchParams = (key, value) => {
-    const updatedParams = new URLSearchParams(searchParams);
-    updatedParams.set(key, value);
-    setSearchParams(updatedParams);
-  };
+  // const [user, setUser] = useState(null);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const username = searchParams.get("username");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    updateSearchParams("username", form.elements.username.value);
-    form.reset();
-  };
+  // useEffect(() => {
+  //   // Тут виконуємо асинхронну операцію,
+  //   // наприклад HTTP-запит за інформацією про користувача
+  //   if (username === "") return;
+  //   FakeAPI.getUser(username).then(setUser);
+  // }, [username]);
+
+  // const updateSearchParams = (key, value) => {
+  //   const updatedParams = new URLSearchParams(searchParams);
+  //   updatedParams.set(key, value);
+  //   setSearchParams(updatedParams);
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+  //   updateSearchParams("username", form.elements.username.value);
+  //   form.reset();
+  // };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input type="text" name="username" />
         <button type="submit">Search</button>
       </form>
-      {user && <UserInfo user={user} />}
+      {user && <UserInfo user={user} />} */}
       {/* <Products /> */}
     </div>
   );
