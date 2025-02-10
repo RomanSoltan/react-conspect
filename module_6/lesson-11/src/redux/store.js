@@ -16,8 +16,62 @@ const initialState = {
   },
 };
 // 2. Передаємо початкове значення стану Redux
+// Використовуємо initialState як значення стану за умовчанням
 const rootReducer = (state = initialState, action) => {
-  return state;
+  // Редюсер розрізняє екшени за значенням властивості type
+  switch (action.type) {
+    // Залежно від типу екшену виконуватиметься різна логіка
+    case "tasks/addTask": {
+      // Потрібно повернути копію об'єкту поточного стану
+      // в якому є всі дані існуючого стану
+      return {
+        ...state,
+        task: {
+          // та новий масив задач в якому є всі існуючі завдання
+          // та об'єкт нового завдання
+          items: [...state.tasks.items, action.payload],
+        },
+      };
+    }
+
+    case "tasks/deleteTask":
+      return {
+        ...state,
+        tasks: {
+          items: state.tasks.items.filter((task) => task.id !== action.payload),
+        },
+      };
+
+    case "tasks/toggleCompleted":
+      return {
+        ...state,
+        tasks: {
+          items: state.tasks.items.map((task) => {
+            if (task.id !== action.payload) {
+              return task;
+            }
+            return {
+              ...task,
+              completed: !task.completed,
+            };
+          }),
+        },
+      };
+
+    case "filters/setStatusFilter":
+      return {
+        ...state,
+        filters: {
+          status: action.payload,
+        },
+      };
+
+    // Кожен редюсер отримує всі екшени, відправлені в стор.
+    // Якщо редюсер не повинен обробляти якийсь тип екшену,
+    // необхідно повернути наявний стан без змін.
+    default:
+      return state;
+  }
 };
 
 export const store = configureStore({
