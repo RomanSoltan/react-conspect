@@ -1,13 +1,13 @@
 import { MdClose } from "react-icons/md";
-import s from "./Task.module.css";
 // 1. Імпортуємо хук
 import { useDispatch } from "react-redux";
 // 2. Імпортуємо фабрику екшену
 import { deleteTask, toggleCompleted } from "../../redux/actions";
+import s from "./Task.module.css";
 
 const Task = ({ task }) => {
   // 3. Отримуємо посилання на функцію відправки екшенів
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   // 4. Викликаємо фабрику екшену та передаємо ідентифікатор завдання
   // 5. Відправляємо результат - екшен видалення завдання
@@ -24,7 +24,7 @@ const Task = ({ task }) => {
         onChange={handleToggle}
       />
       <p className={s.text}>{task.text}</p>
-      <button type="button" className={s.btn} onClick={handleDelete}>
+      <button className={s.btn} onClick={handleDelete}>
         <MdClose size={24} />
       </button>
     </div>

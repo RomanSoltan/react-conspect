@@ -1,9 +1,9 @@
-// 0. Імпортуємо фабрику екшену
-import { setStatusFilter } from "../../redux/actions";
-import Button from "../Button/Button";
-import s from "./StatusFilter.module.css";
 // 1. Імпортуємо хук
 import { useDispatch, useSelector } from "react-redux";
+import Button from "../Button/Button";
+// 0. Імпортуємо фабрику екшену
+import { setStatusFilter } from "../../redux/actions";
+import s from "./StatusFilter.module.css";
 
 const StatusFilter = () => {
   // 2. Отримуємо посилання на функцію відправки екшенів

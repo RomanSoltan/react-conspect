@@ -10,8 +10,6 @@ export const toggleCompleted = createAction("tasks/toggleCompleted");
 
 export const setStatusFilter = createAction("filters/setStatusFilter");
 
-console.log(toggleCompleted(1));
-
 // another way
 // export const addTask = (newTask) => {
 //   return {

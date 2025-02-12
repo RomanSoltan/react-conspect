@@ -8,9 +8,9 @@ const TaskForm = () => {
   // 3. Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
     // 4. Викликаємо фабрику екшену та передаємо дані для payload
     // 5. Відправляємо результат – екшен створення завдання
     dispatch(

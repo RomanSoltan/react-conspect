@@ -26,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
       // в якому є всі дані існуючого стану
       return {
         ...state,
-        task: {
+        tasks: {
           // та новий масив задач в якому є всі існуючі завдання
           // та об'єкт нового завдання
           items: [...state.tasks.items, action.payload],
