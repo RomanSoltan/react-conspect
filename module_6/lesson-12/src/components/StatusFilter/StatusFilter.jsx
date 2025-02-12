@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";
 // 0. Імпортуємо фабрику екшену
-import { setStatusFilter } from "../../redux/actions";
+import { setStatusFilter } from "../../redux/filtersSlice";
 import s from "./StatusFilter.module.css";
 
 const StatusFilter = () => {
