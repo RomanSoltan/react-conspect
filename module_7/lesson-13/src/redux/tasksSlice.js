@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchTasks } from "./operations";
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -7,24 +8,22 @@ const tasksSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-    // Виконається в момент старту HTTP-запиту
-    fetchInProgress(state) {
-      state.isLoading = true;
-    },
-    // Виконається якщо HTTP-запит завершився успішно
-    fetchSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    // Виконається якщо HTTP-запит завершився з помилкою
-    fetchError(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  // Додаємо обробку зовнішніх екшенів
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchTasks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchTasks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchTasks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const { fetchInProgress, fetchSuccess, fetchError } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;
